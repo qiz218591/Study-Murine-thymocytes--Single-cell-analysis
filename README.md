@@ -1,5 +1,7 @@
 # Study-Murine-thymocytes--Single-cell-analysis
+
 ##codes for single cell seq analysis###
+
 library(Seurat)
 library(tidyverse)
 library(dplyr)
@@ -10,6 +12,7 @@ da.data <- Read10X(data.dir ="C:/Users/Divya Agrawal/Downloads/")
 da <- CreateSeuratObject(counts = da.data, min.cells = 4, min.features = 210)
 
 ##QC and filtering##
+
 da[["percent.mt"]] <- PercentageFeatureSet(da, pattern = "^MT-")
 plot1<-FeatureScatter(da, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 plot1
@@ -17,7 +20,9 @@ plot2 <-FeatureScatter(da, feature1 = "nCount_RNA", feature2 = "percent.mt")
 plot2
 plot1 +plot2
 da <- subset(da, subset = nFeature_RNA >215 & nFeature_RNA > 2500 & percent.mt <5)
+
 ##normalise the data##
+
 da <- NormalizeData(da, normalization.method = "LogNormalize", scale.factor = 10000)
 ##Find variable Features
 da <-FindVariableFeatures(da, selection.method = "vst", mfeatures=2000)
