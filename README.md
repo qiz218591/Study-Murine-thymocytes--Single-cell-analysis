@@ -1,4 +1,4 @@
-# Study-Murine-thymocytes--Single-cell-analysis
+# Study-Murine-thymocytes--Single-cell-sequencing-analysis
 
 ##codes for single cell seq analysis###
 
